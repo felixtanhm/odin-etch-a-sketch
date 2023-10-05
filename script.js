@@ -1,15 +1,16 @@
-const defaultGrid = 64;
+const defaultGrid = 16;
 
 let gridSize = defaultGrid;
 let gridContainer = document.querySelector("#grid");
+let gridSliderText = document.querySelector("#selection-slider > label");
 let gameMode = "default";
 
 let mouseDown = false;
-document.body.onmousedown = (e) => {
+gridContainer.onmousedown = (e) => {
   e.preventDefault();
   mouseDown = true;
 };
-document.body.onmouseup = (e) => {
+gridContainer.onmouseup = (e) => {
   e.preventDefault();
   mouseDown = false;
 };
@@ -55,9 +56,16 @@ const handleClick = (e) => {
   button === "clear" ? clearGrid() : (gameMode = button);
 };
 
-document.querySelectorAll("#selection > button").forEach((button) => {
+const handleSlide = (event) => {
+  gridSize = event.target.value;
+  gridSliderText.textContent = `${gridSize} x ${gridSize}`;
+  clearGrid();
+};
+
+document.querySelectorAll("#selection-buttons > button").forEach((button) => {
   button.addEventListener("click", handleClick);
 });
+document.querySelector("#grid-slider").addEventListener("input", handleSlide);
 
 window.onload = () => {
   generateGrid(defaultGrid);
