@@ -3,8 +3,10 @@ const defaultGrid = 16;
 let gridSize = defaultGrid;
 let gridContainer = document.querySelector("#grid");
 let gridSliderText = document.querySelector("#selection-slider > label");
+
 let gameMode = "default";
 
+// Handles mouse interactions on the grid
 let mouseDown = false;
 gridContainer.onmousedown = (e) => {
   e.preventDefault();
@@ -62,11 +64,15 @@ const handleSlide = (event) => {
   clearGrid();
 };
 
+// Adds event listener to each button
 document.querySelectorAll("#selection-buttons > button").forEach((button) => {
   button.addEventListener("click", handleClick);
 });
+
+// Adds event listener to grid size slider
 document.querySelector("#grid-slider").addEventListener("input", handleSlide);
 
+// Initializes grid state
 window.onload = () => {
   generateGrid(defaultGrid);
 };
