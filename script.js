@@ -1,4 +1,4 @@
-const defaultGrid = 16;
+const defaultGrid = 64;
 
 let gridSize = defaultGrid;
 let gridContainer = document.querySelector("#grid");
@@ -29,7 +29,20 @@ const generateGrid = (size) => {
 
 const colorGrid = (event) => {
   if (event.type === "mouseover" && !mouseDown) return;
-  event.target.style.backgroundColor = "#000";
+  if (gameMode === "default") {
+    event.target.style.backgroundColor = "#000";
+  } else if (gameMode === "rainbow") {
+    event.target.style.backgroundColor = generateColor();
+  } else event.target.style.backgroundColor = "#fefefe";
+};
+
+const generateColor = () => {
+  let maxVal = 0xffffff; // 16777215
+  let randomNumber = Math.random() * maxVal;
+  randomNumber = Math.floor(randomNumber);
+  randomNumber = randomNumber.toString(16);
+  let randColor = randomNumber.padStart(6, 0);
+  return `#${randColor.toUpperCase()}`;
 };
 
 const clearGrid = () => {
@@ -39,11 +52,7 @@ const clearGrid = () => {
 
 const handleClick = (e) => {
   let button = e.target.textContent.toLowerCase();
-  if (button === "clear") {
-    clearGrid();
-  } else if (button === "default") {
-  } else if (button === "rainbow") {
-  }
+  button === "clear" ? clearGrid() : (gameMode = button);
 };
 
 document.querySelectorAll("#selection > button").forEach((button) => {
@@ -51,5 +60,5 @@ document.querySelectorAll("#selection > button").forEach((button) => {
 });
 
 window.onload = () => {
-  generateGrid(gridSize);
+  generateGrid(defaultGrid);
 };
