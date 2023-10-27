@@ -1,4 +1,4 @@
-# Etch A Sketch 🪨 📄 ✂️
+# Etch A Sketch ✏️
 
 Etch A Sketch app created with HTML, CSS and JS.
 
