@@ -1,7 +1,7 @@
 :root {
   --background-color: #111827;
-  --button-bg: green;
-  --button-bg-active: darkgreen;
+  --button-bg: #2c766e;
+  --button-bg-active: #245e59;
   --font-color: #d1d5db;
   --border-color: #4b5563;
   --sketch-width: 480px;
@@ -21,6 +21,7 @@ body {
 
 body {
   padding: 12px;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 header {
