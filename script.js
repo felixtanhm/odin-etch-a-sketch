@@ -53,9 +53,19 @@ const clearGrid = () => {
   generateGrid(gridSize);
 };
 
+const setState = (mode) => {
+  gameMode = mode;
+  document.querySelectorAll("#selection-buttons > button").forEach((button) => {
+    button.classList.remove("active");
+    const buttonText = button.textContent.toLowerCase();
+    if (buttonText === mode && buttonText !== "clear")
+      button.classList.add("active");
+  });
+};
+
 const handleClick = (e) => {
   let button = e.target.textContent.toLowerCase();
-  button === "clear" ? clearGrid() : (gameMode = button);
+  button === "clear" ? clearGrid() : setState(button);
 };
 
 const handleSlide = (event) => {

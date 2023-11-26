@@ -1,5 +1,7 @@
 :root {
   --background-color: #111827;
+  --button-bg: green;
+  --button-bg-active: darkgreen;
   --font-color: #d1d5db;
   --border-color: #4b5563;
   --sketch-width: 480px;
@@ -57,17 +59,32 @@ main {
 }
 
 .btn {
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--button-bg);
   border-radius: 4px;
   min-width: 80px;
   margin: 0 4px;
   padding: 8px 16px;
-  background-color: var(--background-color);
+  background-color: var(--button-bg);
   color: var(--font-color);
   cursor: pointer;
+  font-weight: 600;
 }
 
-.btn:hover {
+.btn:hover,
+.active {
+  background-color: var(--button-bg-active);
+}
+
+.active {
+  cursor: default;
+}
+
+#clear {
+  background-color: var(--background-color);
+  border-color: var(--border-color);
+}
+
+#clear:hover {
   background-color: var(--border-color);
 }
 
